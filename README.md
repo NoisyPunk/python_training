@@ -1,1 +1,1 @@
-# Repository for learning AT
+# Repository for learning Autotests
