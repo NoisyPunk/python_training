@@ -13,7 +13,7 @@ class UntitledTestCase(unittest.TestCase):
 
     def test_add_user(self):
         wd = self.open_home_page()
-        self.login(wd)
+        self.login(wd, username='admin', password='secret')
         self.add_group(wd)
         self.paste_firstname(wd)
         self.paste_middlename(wd)
@@ -164,12 +164,12 @@ class UntitledTestCase(unittest.TestCase):
     def add_group(self, wd):
         wd.find_element_by_link_text("add new").click()
 
-    def login(self, wd):
+    def login(self, wd, username, password):
         wd.find_element_by_name("user").click()
-        wd.find_element_by_name("user").send_keys("admin")
+        wd.find_element_by_name("user").send_keys(username)
         wd.find_element_by_id("LoginForm").click()
         wd.find_element_by_name("pass").click()
-        wd.find_element_by_name("pass").send_keys("secret")
+        wd.find_element_by_name("pass").send_keys(password)
         wd.find_element_by_xpath("//input[@value='Login']").click()
 
     def open_home_page(self):
