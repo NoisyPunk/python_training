@@ -16,27 +16,27 @@ class UntitledTestCase(unittest.TestCase):
         wd = self.open_home_page()
         self.login(wd, username='admin', password='secret')
         self.add_group(wd)
-        self.paste_firstname(wd)
-        self.paste_middlename(wd)
-        self.paste_lasname(wd)
-        self.paste_nickname(wd)
+        self.paste_firstname(wd, User(value='54321'))
+        self.paste_middlename(wd, User(value='54321'))
+        self.paste_lasname(wd, User(value='54321'))
+        self.paste_nickname(wd, User(value='54321'))
         self.paste_photo(wd)
-        self.paste_title(wd)
-        self.paste_company(wd)
-        self.paste_address(wd)
-        self.paste_homephone(wd)
-        self.paste_mobilephone(wd)
-        self.paste_workphone(wd)
-        self.paste_fax(wd)
+        self.paste_title(wd, User(value='54321'))
+        self.paste_company(wd, User(value='54321'))
+        self.paste_address(wd, User(value='54321'))
+        self.paste_homephone(wd, User(value='54321'))
+        self.paste_mobilephone(wd, User(value='54321'))
+        self.paste_workphone(wd, User(value='54321'))
+        self.paste_fax(wd, User(value='54321'))
         self.paste_email(wd)
         self.paste_email2(wd)
         self.paste_email3(wd)
         self.paste_homepage(wd)
         self.paste_bday(wd)
         self.paste_ayear(wd)
-        self.paste_address2(wd)
-        self.paste_phonealt(wd)
-        self.paste_notes(wd)
+        self.paste_address2(wd, User(value='54321'))
+        self.paste_phonealt(wd, User(value='54321'))
+        self.paste_notes(wd, User(value='54321'))
         self.submit(wd)
         self.goHomepage(wd)
 
@@ -49,17 +49,17 @@ class UntitledTestCase(unittest.TestCase):
     def paste_notes(self, wd, user):
         wd.find_element_by_name("notes").click()
         wd.find_element_by_name("notes").clear()
-        wd.find_element_by_name("notes").send_keys(value)
+        wd.find_element_by_name("notes").send_keys(user.value)
 
-    def paste_phonealt(self, wd):
+    def paste_phonealt(self, wd, user):
         wd.find_element_by_name("phone2").click()
         wd.find_element_by_name("phone2").clear()
-        wd.find_element_by_name("phone2").send_keys("54321")
+        wd.find_element_by_name("phone2").send_keys(user.value)
 
-    def paste_address2(self, wd):
+    def paste_address2(self, wd, user):
         wd.find_element_by_name("address2").click()
         wd.find_element_by_name("address2").clear()
-        wd.find_element_by_name("address2").send_keys("54321")
+        wd.find_element_by_name("address2").send_keys(user.value)
 
     def paste_ayear(self, wd):
         wd.find_element_by_name("aday").click()
@@ -103,64 +103,64 @@ class UntitledTestCase(unittest.TestCase):
         wd.find_element_by_name("email").clear()
         wd.find_element_by_name("email").send_keys("54321@123.ru")
 
-    def paste_fax(self, wd):
+    def paste_fax(self, wd, user):
         wd.find_element_by_name("fax").click()
         wd.find_element_by_name("fax").clear()
-        wd.find_element_by_name("fax").send_keys("54321")
+        wd.find_element_by_name("fax").send_keys(user.value)
 
-    def paste_workphone(self, wd):
+    def paste_workphone(self, wd, user):
         wd.find_element_by_name("work").click()
         wd.find_element_by_name("work").clear()
-        wd.find_element_by_name("work").send_keys("54321")
+        wd.find_element_by_name("work").send_keys(user.value)
 
-    def paste_mobilephone(self, wd):
+    def paste_mobilephone(self, wd, user):
         wd.find_element_by_name("mobile").click()
         wd.find_element_by_name("mobile").clear()
-        wd.find_element_by_name("mobile").send_keys("54321")
+        wd.find_element_by_name("mobile").send_keys(user.value)
 
-    def paste_homephone(self, wd):
+    def paste_homephone(self, wd, user):
         wd.find_element_by_name("home").click()
         wd.find_element_by_name("home").clear()
-        wd.find_element_by_name("home").send_keys("54321")
+        wd.find_element_by_name("home").send_keys(user.value)
 
-    def paste_address(self, wd):
+    def paste_address(self, wd, user):
         wd.find_element_by_name("address").click()
         wd.find_element_by_name("address").clear()
-        wd.find_element_by_name("address").send_keys("54321")
+        wd.find_element_by_name("address").send_keys(user.value)
 
-    def paste_company(self, wd):
+    def paste_company(self, wd, user):
         wd.find_element_by_name("company").click()
         wd.find_element_by_name("company").clear()
-        wd.find_element_by_name("company").send_keys("54321")
+        wd.find_element_by_name("company").send_keys(user.value)
 
-    def paste_title(self, wd):
+    def paste_title(self, wd, user):
         wd.find_element_by_name("title").click()
         wd.find_element_by_name("title").clear()
-        wd.find_element_by_name("title").send_keys("54321")
+        wd.find_element_by_name("title").send_keys(user.value)
 
     def paste_photo(self, wd):
         photo = wd.find_element_by_xpath("//input[@type='file']")  # возможный вариант, проверить
         photo.send_keys("C:\\sm.JPG")
 
-    def paste_nickname(self, wd):
+    def paste_nickname(self, wd, user):
         wd.find_element_by_name("nickname").click()
         wd.find_element_by_name("nickname").clear()
-        wd.find_element_by_name("nickname").send_keys("54321")
+        wd.find_element_by_name("nickname").send_keys(user.value)
 
-    def paste_lasname(self, wd):
+    def paste_lasname(self, wd, user):
         wd.find_element_by_name("lastname").click()
         wd.find_element_by_name("lastname").clear()
-        wd.find_element_by_name("lastname").send_keys("54321")
+        wd.find_element_by_name("lastname").send_keys(user.value)
 
-    def paste_middlename(self, wd):
+    def paste_middlename(self, wd, user):
         wd.find_element_by_name("middlename").click()
         wd.find_element_by_name("middlename").clear()
-        wd.find_element_by_name("middlename").send_keys("54321")
+        wd.find_element_by_name("middlename").send_keys(user.value)
 
-    def paste_firstname(self, wd):
+    def paste_firstname(self, wd, user):
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
-        wd.find_element_by_name("firstname").send_keys("54321")
+        wd.find_element_by_name("firstname").send_keys(user.value)
 
     def add_group(self, wd):
         wd.find_element_by_link_text("add new").click()
