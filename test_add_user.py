@@ -2,6 +2,7 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 import unittest
+from user import User
 
 
 class UntitledTestCase(unittest.TestCase):
@@ -45,10 +46,10 @@ class UntitledTestCase(unittest.TestCase):
     def submit(self, wd):
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
 
-    def paste_notes(self, wd):
+    def paste_notes(self, wd, user):
         wd.find_element_by_name("notes").click()
         wd.find_element_by_name("notes").clear()
-        wd.find_element_by_name("notes").send_keys("54321")
+        wd.find_element_by_name("notes").send_keys(value)
 
     def paste_phonealt(self, wd):
         wd.find_element_by_name("phone2").click()
