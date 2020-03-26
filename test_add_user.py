@@ -36,7 +36,6 @@ class UntitledTestCase(unittest.TestCase):
         wd.find_element_by_name("nickname").send_keys("54321")
 
         photo = wd.find_element_by_xpath("//input[@type='file']") # возможный вариант, проверить
-        time.sleep(5)
         photo.send_keys("C:\\sm.JPG")
 
 
