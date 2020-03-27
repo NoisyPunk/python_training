@@ -1,3 +1,5 @@
+from selenium import webdriver
+
 
 class Application:
     def __init__(self):
@@ -58,3 +60,7 @@ class Application:
         # logout
         wd = self.wd
         wd.find_element_by_link_text("Logout").click()
+
+
+    def destroy(self):
+        self.wd.quit()
