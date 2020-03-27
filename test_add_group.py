@@ -1,8 +1,4 @@
 # -*- coding: utf-8 -*-
-from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException
-from selenium.common.exceptions import NoAlertPresentException
-import unittest
 import pytest
 from group import Group
 from application import Application
@@ -18,15 +14,15 @@ def app(request):
 class TestAddGroup(unittest.TestCase):
 
 
-    def setUp(self):
-        self.wd = webdriver.Firefox()
-        self.wd.implicitly_wait(30)
+    # def setUp(self):
+    #     self.wd = webdriver.Firefox()
+    #     self.wd.implicitly_wait(30)
 
-    def open_home_page(self):
-        # open homepage
-        self.app = Application()
-        # wd = self.wd
-        # wd.get("http://localhost/addressbook/group.php")
+    # def open_home_page(self):
+    #     # open homepage
+    #     self.app = Application()
+    #     # wd = self.wd
+    #     # wd.get("http://localhost/addressbook/group.php")
 
     # def login(self, username, password):
     #     # login
@@ -78,19 +74,17 @@ class TestAddGroup(unittest.TestCase):
     #     wd = self.wd
     #     wd.find_element_by_link_text("Logout").click()
 
-    def test_add_group(self):
-        self.app.login(username="admin", password="secret")
-        self.app.create_group(Group(name="dfre", header="dfre", footer='123'))
-        self.app.logout()
+    def test_add_group(app):
+        app.login(username="admin", password="secret")
+        app.create_group(Group(name="dfre", header="dfre", footer='123'))
+        app.logout()
 
 
-    def test_add_empty_group(self):
-        self.app.login(username="admin", password="secret")
-        self.app.create_group(Group(name="", header="", footer=''))
-        self.app.logout()
+    def test_add_empty_group(app):
+        app.login(username="admin", password="secret")
+        app.create_group(Group(name="", header="", footer=''))
+        app.logout()
 
-    def tearDown(self):
-        self.app.destroy()
+    # def tearDown(self):
+    #     self.app.destroy()
 
-if __name__ == "__main__":
-    unittest.main()
