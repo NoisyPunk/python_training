@@ -5,12 +5,12 @@ class groupHelper:
 
     def open_group_page(self):
         # Open group page
-        wd = self.wd
+        wd = self.app.wd
         wd.find_element_by_link_text("groups").click()
 
     def create(self, group):
         # Create group
-        wd = self.wd
+        wd = self.app.wd
         self.open_group_page()
         wd.find_element_by_name("new").click()
         wd.find_element_by_name("group_name").click()
@@ -27,10 +27,10 @@ class groupHelper:
 
     def submit_group_create(self):
         # submit group creation
-        wd = self.wd
+        wd = self.app.wd
         wd.find_element_by_name("submit").click()
 
     def return_group_page(self):
         # return group page
-        wd = self.wd
+        wd = self.app.wd
         wd.find_element_by_link_text("group page").click()
