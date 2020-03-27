@@ -1,5 +1,6 @@
 from selenium import webdriver
 from fixture.session import sessionHelper
+from fixture.group import groupHelper
 
 
 class Application:
@@ -7,6 +8,7 @@ class Application:
         self.wd = webdriver.Firefox()
         self.wd.implicitly_wait(30)
         self.session = sessionHelper(self)
+        self.group = groupHelper(self)
 
     def open_home_page(self):
         # open homepage
@@ -26,37 +28,37 @@ class Application:
     #     wd.find_element_by_name("pass").send_keys(password)
     #     wd.find_element_by_xpath("//input[@value='Login']").click()
 
-    def open_group_page(self):
-        # Open group page
-        wd = self.wd
-        wd.find_element_by_link_text("groups").click()
-
-    def create_group(self, group):
-        # Create group
-        wd = self.wd
-        self.open_group_page()
-        wd.find_element_by_name("new").click()
-        wd.find_element_by_name("group_name").click()
-        wd.find_element_by_name("group_name").clear()
-        wd.find_element_by_name("group_name").send_keys(group.name)
-        wd.find_element_by_name("group_header").click()
-        wd.find_element_by_name("group_header").clear()
-        wd.find_element_by_name("group_header").send_keys(group.header)
-        wd.find_element_by_name("group_footer").click()
-        wd.find_element_by_name("group_footer").clear()
-        wd.find_element_by_name("group_footer").send_keys(group.footer)
-        self.submit_group_create()
-        self.return_group_page()
-
-    def submit_group_create(self):
-        # submit group creation
-        wd = self.wd
-        wd.find_element_by_name("submit").click()
-
-    def return_group_page(self):
-        # return group page
-        wd = self.wd
-        wd.find_element_by_link_text("group page").click()
+    # def open_group_page(self):
+    #     # Open group page
+    #     wd = self.wd
+    #     wd.find_element_by_link_text("groups").click()
+    #
+    # def create_group(self, group):
+    #     # Create group
+    #     wd = self.wd
+    #     self.open_group_page()
+    #     wd.find_element_by_name("new").click()
+    #     wd.find_element_by_name("group_name").click()
+    #     wd.find_element_by_name("group_name").clear()
+    #     wd.find_element_by_name("group_name").send_keys(group.name)
+    #     wd.find_element_by_name("group_header").click()
+    #     wd.find_element_by_name("group_header").clear()
+    #     wd.find_element_by_name("group_header").send_keys(group.header)
+    #     wd.find_element_by_name("group_footer").click()
+    #     wd.find_element_by_name("group_footer").clear()
+    #     wd.find_element_by_name("group_footer").send_keys(group.footer)
+    #     self.submit_group_create()
+    #     self.return_group_page()
+    #
+    # def submit_group_create(self):
+    #     # submit group creation
+    #     wd = self.wd
+    #     wd.find_element_by_name("submit").click()
+    #
+    # def return_group_page(self):
+    #     # return group page
+    #     wd = self.wd
+    #     wd.find_element_by_link_text("group page").click()
 
     # def logout(self):
     #     # logout
