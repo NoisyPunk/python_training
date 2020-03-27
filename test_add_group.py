@@ -10,9 +10,7 @@ def app(request):
     request.addfinalizer(fixture.destroy)
     return fixture
 
-
-class TestAddGroup(unittest.TestCase):
-
+    # class TestAddGroup(unittest.TestCase):
 
     # def setUp(self):
     #     self.wd = webdriver.Firefox()
@@ -74,17 +72,15 @@ class TestAddGroup(unittest.TestCase):
     #     wd = self.wd
     #     wd.find_element_by_link_text("Logout").click()
 
-    def test_add_group(app):
-        app.login(username="admin", password="secret")
-        app.create_group(Group(name="dfre", header="dfre", footer='123'))
-        app.logout()
+def test_add_group(app):
+    app.login(username="admin", password="secret")
+    app.create_group(Group(name="dfre", header="dfre", footer='123'))
+    app.logout()
 
-
-    def test_add_empty_group(app):
-        app.login(username="admin", password="secret")
-        app.create_group(Group(name="", header="", footer=''))
-        app.logout()
+def test_add_empty_group(app):
+    app.login(username="admin", password="secret")
+    app.create_group(Group(name="", header="", footer=''))
+    app.logout()
 
     # def tearDown(self):
     #     self.app.destroy()
-

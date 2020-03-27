@@ -14,7 +14,7 @@ class Application:
     def login(self, username, password):
         # login
         wd = self.wd
-        self.open_home_page(wd)
+        self.open_home_page()
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys(username)
