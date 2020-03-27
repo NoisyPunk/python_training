@@ -3,8 +3,17 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest
+import pytest
 from group import Group
 from application import Application
+
+
+@pytest.fixture
+def app(request):
+    fixture = Application()
+    request.addfinalizer(fixture.destroy)
+    return fixture
+
 
 class TestAddGroup(unittest.TestCase):
 
@@ -70,18 +79,18 @@ class TestAddGroup(unittest.TestCase):
     #     wd.find_element_by_link_text("Logout").click()
 
     def test_add_group(self):
-        self.login(username="admin", password="secret")
-        self.create_group(Group(name="dfre", header="dfre", footer='123'))
-        self.logout()
+        self.app.login(username="admin", password="secret")
+        self.app.create_group(Group(name="dfre", header="dfre", footer='123'))
+        self.app.logout()
 
 
     def test_add_empty_group(self):
-        self.login(username="admin", password="secret")
-        self.create_group(Group(name="", header="", footer=''))
-        self.logout()
+        self.app.login(username="admin", password="secret")
+        self.app.create_group(Group(name="", header="", footer=''))
+        self.app.logout()
 
-    # def tearDown(self):
-    #     self.wd.quit()
+    def tearDown(self):
+        self.app.destroy()
 
 if __name__ == "__main__":
     unittest.main()
