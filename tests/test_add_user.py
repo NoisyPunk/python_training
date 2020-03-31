@@ -2,8 +2,7 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 import unittest
-from user import User
-import pytest
+from model.user import User
 
 
 class UntitledTestCase(unittest.TestCase):
