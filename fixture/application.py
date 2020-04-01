@@ -13,7 +13,7 @@ class Application:
     def open_home_page(self):
         # open homepage
         wd = self.wd
-        wd.get("http://localhost/addressbook/group.php")
+        wd.get("http://localhost:8052/addressbook")
 
     def destroy(self):
         self.wd.quit()

@@ -23,7 +23,7 @@ class groupHelper:
         wd.find_element_by_name("group_footer").clear()
         wd.find_element_by_name("group_footer").send_keys(group.footer)
         self.submit_group_create()
-        self.return_group_page()
+        # self.return_group_page()
 
     def submit_group_create(self):
         # submit group creation
