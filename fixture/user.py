@@ -35,6 +35,14 @@ class userHelper:
         self.paste_notes(user)
         self.submit_user_create()
 
+    def delete_first_user(self):
+        wd = self.app.wd
+        wd.find_element_by_name("selected[]").click()
+        wd.find_element_by_xpath("/html/body/div/div[4]/form[2]/div[2]/input").click()
+        wd.switch_to_alert().accept()
+        wd.find_element_by_xpath("/html/body/div/div[3]/ul/li[1]/a").click()
+
+
     def submit_user_create(self):
         wd = self.app.wd
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
