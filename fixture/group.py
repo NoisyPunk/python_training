@@ -37,6 +37,16 @@ class groupHelper:
         wd.find_element_by_name("delete").click()
         self.return_group_page()
 
+    def edit_first_group(self, group):
+        wd = self.app.wd
+        self.open_group_page()
+        wd.find_element_by_name("selected[]").click()
+        wd.find_element_by_xpath("/html/body/div/div[4]/form/input[3]").click()
+        wd.find_element_by_xpath("/html/body/div/div[4]/form/input[2]").clear()
+        wd.find_element_by_xpath("/html/body/div/div[4]/form/input[2]").send_keys(group.name)
+        wd.find_element_by_xpath("/html/body/div/div[4]/form/input[3]").click()
+        wd.find_element_by_xpath("/html/body/div/div[4]/div/i/a").click()
+
 
     def return_group_page(self):
         # return group page

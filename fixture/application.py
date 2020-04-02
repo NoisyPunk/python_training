@@ -15,7 +15,9 @@ class Application:
     def open_home_page(self):
         # open homepage
         wd = self.wd
-        wd.get("http://172.26.66.34/addressbook")
+        # wd.get("http://172.26.66.34/addressbook")
+        wd.get("http://127.0.0.1/addressbook")
+
 
     def destroy(self):
         self.wd.quit()
