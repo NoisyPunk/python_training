@@ -1,3 +1,6 @@
+from selenium.webdriver.support.ui import Select
+
+
 class userHelper:
 
     def __init__(self, app):
@@ -8,6 +11,8 @@ class userHelper:
         wd.find_element_by_link_text("add new").click()
 
     def create(self, user):
+        wd = self.app.wd
+        self.open_user_page()
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
         wd.find_element_by_name("firstname").send_keys(user.value)
@@ -82,12 +87,13 @@ class userHelper:
         wd.find_element_by_name("phone2").click()
         wd.find_element_by_name("phone2").clear()
         wd.find_element_by_name("phone2").send_keys(user.value)
-
         wd.find_element_by_name("notes").click()
         wd.find_element_by_name("notes").clear()
         wd.find_element_by_name("notes").send_keys(user.value)
+        self.submit_user_create()
 
     def submit_user_create(self):
+        wd = self.app.wd
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
 
     # def goHomepage(self, wd):

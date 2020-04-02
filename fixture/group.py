@@ -41,4 +41,4 @@ class groupHelper:
     def return_group_page(self):
         # return group page
         wd = self.app.wd
-        wd.find_element_by_link_text("group page").click()
+        wd.find_element_by_xpath("/html/body/div/div[4]/div/i/a").click()
