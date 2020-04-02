@@ -6,7 +6,7 @@ class groupHelper:
     def open_group_page(self):
         # Open group page
         wd = self.app.wd
-        wd.find_element_by_link_text("groups").click()
+        wd.find_element_by_xpath("/html/body/div/div[3]/ul/li[3]/a").click()
 
     def create(self, group):
         # Create group
@@ -41,4 +41,4 @@ class groupHelper:
     def return_group_page(self):
         # return group page
         wd = self.app.wd
-        wd.find_element_by_xpath("/html/body/div/div[4]/div/i/a").click()
+        wd.find_element_by_xpath("/html/body/div/div[3]/ul/li[3]/a").click()
