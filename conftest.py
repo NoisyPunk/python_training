@@ -7,7 +7,7 @@ from fixture.application import Application
 def app(request):
     fixture = Application()
     fixture.session.login(username="admin", password="secret")
-    def fin:
+    def fin():
         fixture.session.logout()
         fixture.destroy()
     request.addfinalizer(fin)

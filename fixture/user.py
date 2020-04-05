@@ -6,12 +6,17 @@ class userHelper:
     def __init__(self, app):
         self.app = app
 
-    def open_user_page(self):
+    def open_create_user_page(self):
         wd = self.app.wd
         wd.find_element_by_link_text("add new").click()
 
+    def open_user_page(self):
+        wd = self.app.wd
+        wd.find_element_by_link_text("home").click()
+
+
     def create(self, user):
-        self.open_user_page()
+        self.open_create_user_page()
         self.paste_firstname(user)
         self.paste_middlename(user)
         self.paste_lasname(user)
@@ -37,6 +42,7 @@ class userHelper:
 
     def delete_first_user(self):
         wd = self.app.wd
+        self.open_user_page()
         wd.find_element_by_name("selected[]").click()
         wd.find_element_by_xpath("/html/body/div/div[4]/form[2]/div[2]/input").click()
         wd.switch_to_alert().accept()

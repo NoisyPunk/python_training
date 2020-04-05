@@ -24,6 +24,6 @@ class sessionHelper:
         wd = self.app.wd
         self.app.open_home_page()
         wd.find_element_by_xpath("/html/body/div/div[1]/form/a").click()
-        wd.find_element_by_xpath("/html/body/div/div[1]/form/a").click()
+        # wd.find_element_by_xpath("/html/body/div/div[1]/form/a").click()
 
 
