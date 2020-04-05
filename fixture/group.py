@@ -6,7 +6,8 @@ class groupHelper:
     def open_group_page(self):
         # Open group page
         wd = self.app.wd
-        wd.find_element_by_xpath("/html/body/div/div[3]/ul/li[3]/a").click()
+        if not (wd.current_url.endswith("/group.php") and len(wd.find_elements_by_name('new')) > 0):
+            wd.find_element_by_link_text("groups").click() # проверка чтобы не было лишних переходов на страницу
 
     def create(self, group):
         # Create group
@@ -46,6 +47,11 @@ class groupHelper:
     def select_first_group(self):
         wd = self.app.wd
         wd.find_element_by_name("selected[]").click()
+
+    def count(self):
+        wd = self.app.wd
+        self.open_group_page()
+        return len(wd.find_elements_by_name("selected[]"))
 
     def modify_first_group(self, new_group_data):
         wd = self.app.wd
