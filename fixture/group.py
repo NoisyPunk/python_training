@@ -19,6 +19,7 @@ class groupHelper:
         self.fill_group_form(group)
         self.submit_group_create()
         self.return_group_page()
+        self.group_cache = None
 
     def fill_group_form(self, group):
         wd = self.app.wd
@@ -44,6 +45,8 @@ class groupHelper:
         self.select_first_group()
         wd.find_element_by_name("delete").click()
         self.return_group_page()
+        self.group_cache = None
+
 
     def select_first_group(self):
         wd = self.app.wd
@@ -65,27 +68,22 @@ class groupHelper:
         # submit modify
         wd.find_element_by_name("update").click()
         self.return_group_page()
-
-
-        # wd.find_element_by_xpath("/html/body/div/div[4]/form/input[3]").click()
-        # wd.find_element_by_xpath("/html/body/div/div[4]/form/input[2]").clear()
-        # wd.find_element_by_xpath("/html/body/div/div[4]/form/input[2]").send_keys(group.name)
-        # wd.find_element_by_xpath("/html/body/div/div[4]/form/input[3]").click()
-        # wd.find_element_by_xpath("/html/body/div/div[4]/div/i/a").click()
-
+        self.group_cache = None
 
     def return_group_page(self):
         # return group page
         wd = self.app.wd
         wd.find_element_by_xpath("/html/body/div/div[3]/ul/li[3]/a").click()
 
+    group_cache = None
 
     def get_group_list(self):
-        wd = self.app.wd
-        self.open_group_page()
-        groups = []
-        for element in wd.find_elements_by_css_selector("span.group"):
-            text = element.text
-            id = element.find_element_by_name("selected[]").get_attribute("value")
-            groups.append(Group(name=text, id=id))
-        return groups
+        if self.group_cache is None:
+            wd = self.app.wd
+            self.open_group_page()
+            self.group_cache = []
+            for element in wd.find_elements_by_css_selector("span.group"):
+                text = element.text
+                id = element.find_element_by_name("selected[]").get_attribute("value")
+                self.group_cache.append(Group(name=text, id=id))
+        return list(self.group_cache)
