@@ -71,9 +71,23 @@ class groupHelper:
         return len(wd.find_elements_by_name("selected[]"))
 
     def modify_first_group(self, new_group_data):
+        self.modify_first_group(0)
+    #     wd = self.app.wd
+    #     self.open_group_page()
+    #     self.select_first_group()
+    #     # open modif group
+    #     wd.find_element_by_name("edit").click()
+    #     # fill group form
+    #     self.fill_group_form(new_group_data)
+    #     # submit modify
+    #     wd.find_element_by_name("update").click()
+    #     self.return_group_page()
+    #     self.group_cache = None
+
+    def modify_group_by_index(self, index, new_group_data):
         wd = self.app.wd
         self.open_group_page()
-        self.select_first_group()
+        self.select_group_by_index(index)
         # open modif group
         wd.find_element_by_name("edit").click()
         # fill group form
@@ -82,6 +96,7 @@ class groupHelper:
         wd.find_element_by_name("update").click()
         self.return_group_page()
         self.group_cache = None
+
 
     def return_group_page(self):
         # return group page
