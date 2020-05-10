@@ -1,4 +1,4 @@
-from model.user import User
+from model.contact import User
 
 # def test_del_user(app):
 #     app.session.login(username="admin", password="secret")
