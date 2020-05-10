@@ -1,7 +1,7 @@
 from selenium import webdriver
 from fixture.session import sessionHelper
 from fixture.group import groupHelper
-from fixture.user import userHelper
+from fixture.contact import userHelper
 
 
 class Application:
