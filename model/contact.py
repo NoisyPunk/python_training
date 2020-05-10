@@ -1,5 +1,25 @@
 
-class User:
+from sys import maxsize
 
-    def __init__(self, value):
-        self.value = value
+class Contact:
+
+    def __init__(self, firstname=None, lastname=None, homephone=None, mobilephone=None, workphone=None, secondaryphone=None, id=None):
+        self.firstname = firstname
+        self.lastname = lastname
+        self.homephone = homephone
+        self.mobilephone = mobilephone
+        self.workphone = workphone
+        self.secondaryphone = secondaryphone
+        self.id = id
+
+    def __repr__(self): # представление объектов
+        return "%s:%s %s" % (self.id, self.firstname, self.lastname)
+
+    def __eq__(self, other): # функция сравнения объектов
+        return (self.id is None or other.id is None or self.id == other.id) and self.firstname == other.firstname and self.lastname == other.lastname
+
+    def id_or_max(self): # определение ключа сравнения
+        if self.id:
+            return int(self.id)
+        else:
+            return maxsize
