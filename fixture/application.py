@@ -1,7 +1,7 @@
 from selenium import webdriver
 from fixture.session import sessionHelper
 from fixture.group import groupHelper
-from fixture.contact import userHelper
+from fixture.contact import ContactHelper
 
 
 class Application:
@@ -10,7 +10,7 @@ class Application:
         # self.wd.implicitly_wait(5)
         self.session = sessionHelper(self)
         self.group = groupHelper(self)
-        self.user = userHelper(self)
+        self.contact = ContactHelper(self)
 
     def is_valid(self):
         wd = self.wd
